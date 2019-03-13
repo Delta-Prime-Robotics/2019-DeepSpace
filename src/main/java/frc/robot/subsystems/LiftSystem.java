@@ -10,6 +10,7 @@ package frc.robot.subsystems;
 import edu.wpi.first.wpilibj.DigitalInput;
 import edu.wpi.first.wpilibj.Encoder;
 import edu.wpi.first.wpilibj.SpeedController;
+import edu.wpi.first.wpilibj.SpeedControllerGroup;
 import edu.wpi.first.wpilibj.VictorSP;
 import edu.wpi.first.wpilibj.command.Subsystem;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
@@ -22,7 +23,7 @@ import frc.robot.commands.LiftStickCommand;
  */
 public class LiftSystem extends Subsystem {
   // Components
-  private SpeedController m_liftMotor = new VictorSP(RobotMap.PwmPorts.liftMotor);
+  SpeedControllerGroup m_liftGroup;
   private DigitalInput m_limitTop = new DigitalInput(RobotMap.DioPorts.liftHigh);
   private DigitalInput m_limitBottom = new DigitalInput(RobotMap.DioPorts.liftLow);
   private Encoder m_liftEncoder = new Encoder(RobotMap.DioPorts.liftEncoderAChannel, RobotMap.DioPorts.liftEncoderBChannel,
@@ -30,6 +31,11 @@ public class LiftSystem extends Subsystem {
 
 
 public LiftSystem(){
+
+  SpeedController lift1 = new VictorSP(RobotMap.PwmPorts.liftMotor1);
+  SpeedController lift2 = new VictorSP(RobotMap.PwmPorts.liftMotor2);
+  m_liftGroup = new SpeedControllerGroup(lift1, lift2);
+
  double dEncDistancePerPulse = 19.25 / 360;
     m_liftEncoder.setDistancePerPulse(dEncDistancePerPulse);
 }
@@ -45,15 +51,15 @@ public LiftSystem(){
   public void joystickLift(double speed) {
     SmartDashboard.putNumber("lift encoder", m_liftEncoder.getRaw());
    if ((speed > 0 && isAtTop()) || (speed < 0 && isAtBottom())){
-    this.m_liftMotor.set(0);
+    this.m_liftGroup.set(0);
    }
    else {
-    this.m_liftMotor.set(speed);
+    this.m_liftGroup.set(speed);
    }
   }
 
   public void stop() {
-    this.m_liftMotor.set(0);
+    this.m_liftGroup.set(0);
   }
 
   // Supporting methods

@@ -26,8 +26,8 @@ public class OI {
 
   // *** Controller constants ***
   private static class UsbPort {
-    public static int leftStick = 1;
     public static int rightStick = 0;
+    public static int leftStick = 1;
     public static int gamePad = 2;
     public static int arcadeStick = 3;
   }
