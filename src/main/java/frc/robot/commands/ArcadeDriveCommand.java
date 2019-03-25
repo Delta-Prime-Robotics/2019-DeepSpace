@@ -26,7 +26,7 @@ public class ArcadeDriveCommand extends Command {
   // Called repeatedly when this Command is scheduled to run
   @Override
   protected void execute() {
-    Robot.m_driveSystem.arcadeDrive(Robot.m_oi.rightStick);
+    Robot.m_driveSystem.arcadeStickArcadeDrive(Robot.m_oi.arcadeStick);
   }
 
   // Make this return true when this Command no longer needs to run execute()

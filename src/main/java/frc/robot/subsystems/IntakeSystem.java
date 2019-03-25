@@ -25,13 +25,13 @@ public class IntakeSystem extends Subsystem {
 
   // Put methods for controlling this subsystem here. Call these from Commands.
   public void intake() {
-    this.rightMotor.set(intakeSpeed);
-    this.leftMotor.set(-1*intakeSpeed);
+    this.rightMotor.set(intakeSpeed*0.75);
+    this.leftMotor.set(-0.75*intakeSpeed);
   }
 
   public void extake() {
-    this.rightMotor.set(-1*intakeSpeed);
-    this.leftMotor.set(intakeSpeed);
+    this.rightMotor.set(-0.5*intakeSpeed);
+    this.leftMotor.set(intakeSpeed*0.5);
   }
 
   public void stop() {

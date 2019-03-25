@@ -20,10 +20,10 @@ public class RobotMap {
     public static int leftMotor2 = 1;
     public static int rightMotor1 = 2;
     public static int rightMotor2 = 3;
-    public static int liftMotor1 = 4;
-    public static int liftMotor2 = 5;
     // ...
-    public static int servo = 6;
+    public static int liftMotor1 = 5;
+    public static int liftMotor2 = 6;
+    public static int servo = 7;
     // ...
     public static int leftIntake = 8;
     public static int rightIntake = 9;
@@ -31,6 +31,8 @@ public class RobotMap {
 
   // Variables for the DIO Ports
   public static class DioPorts {
+    public static int liftHigh = 0;
+    public static int liftLow = 1; 
     // ...
     public static int leftEncoderAChannel = 2;
     public static int leftEncoderBChannel = 3;
@@ -41,8 +43,6 @@ public class RobotMap {
     public static int liftEncoderAChannel = 6;
     public static int liftEncoderBChannel = 7;
     // ...
-    public static int liftHigh = 8;
-    public static int liftLow = 9; 
   }
 
   // If you are using multiple modules, make sure to define both the port

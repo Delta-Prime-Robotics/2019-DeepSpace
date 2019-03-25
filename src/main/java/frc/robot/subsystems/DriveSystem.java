@@ -88,8 +88,8 @@ public class DriveSystem extends Subsystem {
   public void initDefaultCommand() {
     // Set the default command for a subsystem here.
     // setDefaultCommand(new TankDriveCommand());
-    // setDefaultCommand(new ArcadeDriveCommand());
-   //  setDefaultCommand(new CurvatureDriveCommand());
+    //setDefaultCommand(new ArcadeDriveCommand());
+    //setDefaultCommand(new CurvatureDriveCommand());
     setDefaultCommand(new ChooserDriveCommand());
   }
 
