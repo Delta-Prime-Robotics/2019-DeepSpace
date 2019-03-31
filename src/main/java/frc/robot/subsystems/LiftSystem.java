@@ -48,14 +48,32 @@ public LiftSystem(){
   }
 
   // Put methods for controlling this subsystem here. Call these from Commands.
-  public void joystickLift(double speed) {
-    SmartDashboard.putNumber("lift encoder", m_liftEncoder.getRaw());
-   if ((speed > 0 && isAtTop()) || (speed < 0 && isAtBottom())){
-    this.m_liftGroup.set(0);
-   }
-   else {
-    this.m_liftGroup.set(speed);
-   }
+  public void linearLift(double speed) {
+
+    SmartDashboard.putNumber("lift speed", speed);
+
+    if ((speed > 0 && isAtTop()) || (speed < 0 && isAtBottom())){
+      this.m_liftGroup.set(0);
+    }
+    else {
+      this.m_liftGroup.set(speed);
+    }
+  }
+
+  public void joystickLift(double raw) {
+    SmartDashboard.putNumber("lift input", raw);
+    //SmartDashboard.putNumber("lift encoder", m_liftEncoder.getRaw());
+
+    if ((raw > 0 && isAtTop()) || (raw < 0 && isAtBottom())){
+      this.m_liftGroup.set(0);
+    }
+    else {
+      double offset = 0.2;
+      double max = 0.7;
+      double rawCubed = Math.pow(raw, 3);
+      double speed = ((max - offset)*rawCubed) + offset;
+      this.m_liftGroup.set(speed);
+    }
   }
 
   public void stop() {
@@ -71,5 +89,4 @@ public LiftSystem(){
     return !this.m_limitBottom.get();
   }
 
-  
 }

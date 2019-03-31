@@ -1,6 +1,6 @@
 plugins {
     id "java"
-    id "edu.wpi.first.GradleRIO" version "2019.2.1"
+    id "edu.wpi.first.GradleRIO" version "2019.4.1"
 }
 
 def ROBOT_MAIN_CLASS = "frc.robot.Main"
@@ -15,7 +15,7 @@ deploy {
             // You can use getTeamOrDefault(team) instead of getTeamNumber if you
             // want to store a team number in this file.
             team = frc.getTeamNumber()
-            validImageVersions = ['2019_v12', '2019_v13', '2019_v14']
+            //validImageVersions = ['2019_v12', '2019_v13', '2019_v14']
         }
     }
     artifacts {
