@@ -48,7 +48,7 @@ public LiftSystem(){
   }
 
   // Put methods for controlling this subsystem here. Call these from Commands.
-  public void linearLift(double speed) {
+  public void joystickLift(double speed) {
 
     SmartDashboard.putNumber("lift speed", speed);
 
@@ -56,11 +56,11 @@ public LiftSystem(){
       this.m_liftGroup.set(0);
     }
     else {
-      this.m_liftGroup.set(speed);
+      this.m_liftGroup.set(-1*speed);
     }
   }
 
-  public void joystickLift(double raw) {
+  public void nonLinearLift(double raw) {
     SmartDashboard.putNumber("lift input", raw);
     //SmartDashboard.putNumber("lift encoder", m_liftEncoder.getRaw());
 
@@ -68,10 +68,10 @@ public LiftSystem(){
       this.m_liftGroup.set(0);
     }
     else {
-      double offset = 0.2;
-      double max = 0.7;
+      double offset = 0.15;
+      double max = 0.8;
       double rawCubed = Math.pow(raw, 3);
-      double speed = ((max - offset)*rawCubed) + offset;
+      double speed = -1*((max - offset)*rawCubed) + offset;
       this.m_liftGroup.set(speed);
     }
   }

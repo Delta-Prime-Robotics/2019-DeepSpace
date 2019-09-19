@@ -90,7 +90,8 @@ public class DriveSystem extends Subsystem {
     // setDefaultCommand(new TankDriveCommand());
     //setDefaultCommand(new ArcadeDriveCommand());
     //setDefaultCommand(new CurvatureDriveCommand());
-    setDefaultCommand(new ChooserDriveCommand());
+    //setDefaultCommand(new ChooserDriveCommand());
+    setDefaultCommand(new GamepadArcadeDrive());
   }
 
   public void tankDrive(Joystick leftStick, Joystick rightStick) {
@@ -114,6 +115,15 @@ public class DriveSystem extends Subsystem {
     m_diffDrive.arcadeDrive(Speed, Rotation);
   }
 
+  public void gamepadArcadeDrive(Joystick gamepad) {
+    this.m_anglePidController.disable();
+    
+    double Speed = -1.0 * gamepad.getRawAxis(OI.GamePadAxis.RightStickUpDn);// * -0.5;
+    double Rotation = gamepad.getRawAxis(OI.GamePadAxis.RightStickLR);// * 0.75;
+
+    m_diffDrive.arcadeDrive(Speed, Rotation);
+  }
+
   public void curvatureDrive(Joystick joystick) {
     this.m_anglePidController.disable();
 
@@ -122,7 +132,7 @@ public class DriveSystem extends Subsystem {
     // double speed = joystick.getRawAxis(OI.JoystickAxis.UpDown) * throttle;
     // double Rotation = joystick.getRawAxis(OI.JoystickAxis.LeftRight) *throttle;
 
-    double speed = joystick.getRawAxis(OI.ArcadeStickAxis.UpDown);
+    double speed = -1*joystick.getRawAxis(OI.ArcadeStickAxis.UpDown);
     double Rotation = joystick.getRawAxis(OI.ArcadeStickAxis.turn);
 
     boolean x = joystick.getRawButton(1);
@@ -169,7 +179,7 @@ public class DriveSystem extends Subsystem {
     /* These functions are compatible w/the WPI Gyro Class, providing a simple  */
     /* path for upgrading from the Kit-of-Parts gyro to the navx MXP            */
     
-    SmartDashboard.putNumber(   "IMU_TotalYaw",         m_ahrs.getAngle());
+    //SmartDashboard.putNumber(   "IMU_TotalYaw",         m_ahrs.getAngle());
     //SmartDashboard.putNumber(   "IMU_YawRateDPS",       m_ahrs.getRate());
 
     /* Display Processed Acceleration Data (Linear Acceleration, Motion Detect) */

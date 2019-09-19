@@ -34,8 +34,8 @@ public class RobotMap {
     public static int liftHigh = 0;
     public static int liftLow = 1; 
     // ...
-    public static int leftEncoderAChannel = 2;
-    public static int leftEncoderBChannel = 3;
+    public static int leftEncoderAChannel = 3;
+    public static int leftEncoderBChannel = 2;
 
     public static int rightEncoderAChannel = 4;
     public static int rightEncoderBChannel = 5;

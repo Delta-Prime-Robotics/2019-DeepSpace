@@ -72,7 +72,7 @@ public class Robot extends TimedRobot {
    */
   @Override
   public void robotPeriodic() {
-    SmartDashboard.putNumber("Lift Axis", m_oi.gamePad.getRawAxis(OI.GamePadAxis.RightStickUpDn));
+    //SmartDashboard.putNumber("Lift Axis", m_oi.gamePad.getRawAxis(OI.GamePadAxis.RightStickUpDn));
     m_driveSystem.log();
     m_littleServoSwitch.log();
   }

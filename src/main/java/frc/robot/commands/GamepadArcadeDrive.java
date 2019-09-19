@@ -8,13 +8,12 @@
 package frc.robot.commands;
 
 import edu.wpi.first.wpilibj.command.Command;
-import frc.robot.OI;
 import frc.robot.Robot;
 
-public class LiftStickCommand extends Command {
-  public LiftStickCommand() {
+public class GamepadArcadeDrive extends Command {
+  public GamepadArcadeDrive() {
     // Use requires() here to declare subsystem dependencies
-    requires(Robot.m_liftSystem);
+    requires(Robot.m_driveSystem);
   }
 
   // Called just before this Command runs the first time
@@ -25,8 +24,7 @@ public class LiftStickCommand extends Command {
   // Called repeatedly when this Command is scheduled to run
   @Override
   protected void execute() {
-  Robot.m_liftSystem.joystickLift(Robot.m_oi.gamePad.getRawAxis(OI.GamePadAxis.LeftStickUpDn));
-    //Robot.m_liftSystem.nonLinearLift(Robot.m_oi.gamePad.getRawAxis(OI.GamePadAxis.RightStickUpDn));
+    Robot.m_driveSystem.gamepadArcadeDrive(Robot.m_oi.gamePad);
   }
 
   // Make this return true when this Command no longer needs to run execute()
@@ -38,7 +36,7 @@ public class LiftStickCommand extends Command {
   // Called once after isFinished returns true
   @Override
   protected void end() {
-    Robot.m_liftSystem.stop();
+    Robot.m_driveSystem.stop();
   }
 
   // Called when another command which requires one or more of the same
