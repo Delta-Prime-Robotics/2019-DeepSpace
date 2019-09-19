@@ -91,7 +91,7 @@ public class DriveSystem extends Subsystem {
     //setDefaultCommand(new ArcadeDriveCommand());
     //setDefaultCommand(new CurvatureDriveCommand());
     //setDefaultCommand(new ChooserDriveCommand());
-    setDefaultCommand(new GamepadArcadeDrive());
+    setDefaultCommand(new ArcadeDriveCommand());
   }
 
   public void tankDrive(Joystick leftStick, Joystick rightStick) {
