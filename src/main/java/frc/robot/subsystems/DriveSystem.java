@@ -14,16 +14,16 @@ import edu.wpi.first.wpilibj.DriverStation;
 import edu.wpi.first.wpilibj.Encoder;
 import edu.wpi.first.wpilibj.Joystick;
 import edu.wpi.first.wpilibj.PIDController;
+import edu.wpi.first.wpilibj.SerialPort;
 import edu.wpi.first.wpilibj.SpeedController;
 import edu.wpi.first.wpilibj.SpeedControllerGroup;
 import edu.wpi.first.wpilibj.VictorSP;
-import edu.wpi.first.wpilibj.SerialPort;
 import edu.wpi.first.wpilibj.command.Subsystem;
 import edu.wpi.first.wpilibj.drive.DifferentialDrive;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import frc.robot.OI;
 import frc.robot.RobotMap;
-import frc.robot.commands.*;
+import frc.robot.commands.ArcadeDriveCommand;
 
 /**
  * Add your docs here.
@@ -143,7 +143,7 @@ public class DriveSystem extends Subsystem {
   public void arcadeStickArcadeDrive(Joystick joystick){
     this.m_anglePidController.disable();
 
-    double Speed = joystick.getRawAxis(OI.ArcadeStickAxis.UpDown);
+    double Speed = -1 * joystick.getRawAxis(OI.ArcadeStickAxis.UpDown);
     double Rotation = joystick.getRawAxis(OI.ArcadeStickAxis.turn);
 
     m_diffDrive.arcadeDrive(Speed, Rotation);
